@@ -11,7 +11,7 @@ import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.when;
 
-public class RateLimitingTestUnauthorisedUsers {
+public class Test_RateLimitingTestUnauthorisedUsers {
 
     private static Integer MAX_UNAUTH_RATE_LIMIT = 60;
     private String curr_rate_limiting = null;
@@ -27,8 +27,12 @@ public class RateLimitingTestUnauthorisedUsers {
 
     }
 
+    /**
+     * Scenario: To Test the unauthenticated users can only request the resources for maximum
+     * allowed boundaries
+     */
     @Test
-    public void test_GistApiForUserWithNoGistScope_ShouldBeNoSuccess() {
+    public void Test_GistApiForUserWithNoGistScope() {
 
         for (int i = 1 ; i <= MAX_UNAUTH_RATE_LIMIT + 1; i++) {
 

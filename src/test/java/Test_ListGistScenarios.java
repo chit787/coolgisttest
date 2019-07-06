@@ -17,7 +17,7 @@ import io.restassured.response.Response;
 import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.when;
 
-public class ListGistScenarios {
+public class Test_ListGistScenarios {
 
     private static ArrayList<String> _publicGists = new ArrayList<String>();
     private static ArrayList<String> _privateGists = new ArrayList<String>();
@@ -41,6 +41,11 @@ public class ListGistScenarios {
                 path("id").toString();
     }
 
+    /**
+     * Setup method which will first inject some gists which can be asserted later for
+     * authenticated and unauthenticated user
+     * @throws IOException
+     */
     @Before
     public void setup() throws IOException {
         InputStream input = new FileInputStream("src/test/resources/config.properties");
@@ -55,8 +60,11 @@ public class ListGistScenarios {
         RestAssured.defaultParser = Parser.JSON;
     }
 
+    /**
+     * Scenario: user should be able to list his public gists when no token is provided
+     */
     @Test
-    public void test_ListPublicGists_ShouldBeSuccess() {
+    public void Test_ListPublicGists_ShouldBeSuccess() {
 
         Response response = when().
             get(props.getProperty("userEndpoint") + "/chit787/gists");
@@ -74,8 +82,11 @@ public class ListGistScenarios {
 
     }
 
+    /**
+     * Scenario: user should be able to list his public & private gists when valid token is provided
+     */
     @Test
-    public void test_ListPrivateGists_ShouldBeSuccess() {
+    public void Test_ListPrivateGists_ShouldBeSuccess() {
 
         Response response = given().
             auth().

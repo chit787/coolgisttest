@@ -13,7 +13,7 @@ import io.restassured.response.Response;
 import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.when;
 
-public class RateLimitingTestUnauthorisedToAuthorisedUsers {
+public class Test_RateLimitingTestUnauthorisedToAuthorisedUsers {
 
     private static Integer MAX_UNAUTH_RATE_LIMIT = 60;
     private static Integer MAX_AUTH_RATE_LIMIT = 5000;
@@ -30,8 +30,12 @@ public class RateLimitingTestUnauthorisedToAuthorisedUsers {
 
     }
 
+    /**
+     * Scenario : To test api rate limit when a user without sessions consumes the limit and still able
+     * to request same resource when requested that resource with oAuth token
+     */
     @Test
-    public void test_GistApiRateLimitForUserWithNoGistScopeAndGistScope_ShouldBeSuccess() {
+    public void Test_GistApiRateLimitForUserWithNoGistScopeAndGistScope() {
 
         for (int i = 1; i <= MAX_UNAUTH_RATE_LIMIT + 1; i++) {
             Response response = when().

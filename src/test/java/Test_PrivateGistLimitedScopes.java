@@ -12,7 +12,7 @@ import org.junit.runners.MethodSorters;
 import static io.restassured.RestAssured.given;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class PrivateGistLimitedScopes {
+public class Test_PrivateGistLimitedScopes {
 
     private static String _gistId = null;
     Properties props = new Properties();
@@ -25,20 +25,24 @@ public class PrivateGistLimitedScopes {
         File file = new File("src/test/resources/privateGist.json");
 
         _gistId = given().
-                auth().
-                oauth2(props.getProperty("gist_repo_user_gist_scopes")).
-                when().
-                body(file).
-                post(props.getProperty("endpoint")).
-                then().
-                assertThat().
-                statusCode(HttpStatus.SC_CREATED).
-                and().
-                extract().path("id");
+                    auth().
+                    oauth2(props.getProperty("gist_repo_user_gist_scopes")).
+                  when().
+                    body(file).
+                    post(props.getProperty("endpoint")).
+                  then().
+                    assertThat().
+                    statusCode(HttpStatus.SC_CREATED).
+                  and().
+                    extract().
+                    path("id");
     }
 
+    /**
+     * Scenario: user should not be able to create a gist without 'gist' scope assigned to the user token
+     */
     @Test
-    public void test_1_CreateGistForUserWithNoGistScope_ShouldBeNoSuccess() {
+    public void Test_1_CreateGistForUserWithNoGistScope_ShouldBeNoSuccess() {
 
         File file = new File("src/test/resources/privateGist.json");
         given().
@@ -52,8 +56,11 @@ public class PrivateGistLimitedScopes {
             statusCode(HttpStatus.SC_NOT_FOUND);
     }
 
+    /**
+     * Scenario: user should not be able to delete a gist without 'gist' scope assigned to the user token
+     */
     @Test
-    public void test_2_DeletePrivateGistForUsersWithNoGistScope_ShouldBeNoSuccess() {
+    public void Test_2_DeletePrivateGistForUsersWithNoGistScope_ShouldBeNoSuccess() {
         given().
             auth().
             oauth2(props.getProperty("scope_repo_user_with_no-gist")).

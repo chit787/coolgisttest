@@ -12,7 +12,7 @@ import org.junit.runners.MethodSorters;
 import static io.restassured.RestAssured.*;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class CRUD_PrivateGistAllScopes {
+public class Test_CRUD_PrivateGistAllScopes {
 
     private static String _gistId = null;
     Properties props = new Properties();
@@ -23,8 +23,11 @@ public class CRUD_PrivateGistAllScopes {
         props.load(input);
     }
 
+    /**
+     * Scenario: User should be able to create a gist with valid token
+     */
     @Test
-    public void test_1_CreateGistForUserWithAllScopes_ShouldBeSuccess() {
+    public void Test_1_CreateGistForUserWithAllScopes_ShouldBeSuccess() {
 
         File file = new File("src/test/resources/privateGist.json");
         _gistId = given().
@@ -40,8 +43,11 @@ public class CRUD_PrivateGistAllScopes {
                 extract().path("id");
     }
 
+    /**
+     * Scenario: User should be able to edit a gist with valid token
+     */
     @Test
-    public void test_2_EditPrivateGistForUsersWithAllScopes_ShouldBeSuccess() {
+    public void Test_2_EditPrivateGistForUsersWithAllScopes_ShouldBeSuccess() {
 
         File file = new File("src/test/resources/editGist.json");
 
@@ -55,27 +61,33 @@ public class CRUD_PrivateGistAllScopes {
             statusCode(HttpStatus.SC_OK);
     }
 
+    /**
+     * Scenario: User should be able to star a gist with valid token
+     */
     @Test
-    public void test_3_StarPrivateGistForUsersWithAllScopes_ShouldBeSuccess() {
+    public void Test_3_StarPrivateGistForUsersWithAllScopes_ShouldBeSuccess() {
 
         given().
-                auth().
-                oauth2(props.getProperty("gist_repo_user_gist_scopes")).
-                header("Content-Lenngth", 0).
-                when().
-                put(props.getProperty("endpoint") +
-                        File.separator +
-                        _gistId +
-                        File.separator +
-                        "star").
-                then().
-                assertThat().
-                statusCode(HttpStatus.SC_NO_CONTENT);
+            auth().
+            oauth2(props.getProperty("gist_repo_user_gist_scopes")).
+            header("Content-Lenngth", 0).
+        when().
+            put(props.getProperty("endpoint") +
+                    File.separator +
+                    _gistId +
+                    File.separator +
+                    "star").
+        then().
+            assertThat().
+            statusCode(HttpStatus.SC_NO_CONTENT);
 
     }
 
+    /**
+     * Scenario: User should be able to delete a star from a gist with valid token
+     */
     @Test
-    public void test_4_UnStarPrivateGistForUsersWithAllScopes_ShouldBeSuccess() {
+    public void Test_4_UnStarPrivateGistForUsersWithAllScopes_ShouldBeSuccess() {
         given().
                 auth().
                 oauth2(props.getProperty("gist_repo_user_gist_scopes")).
@@ -104,8 +116,11 @@ public class CRUD_PrivateGistAllScopes {
 
     }
 
+    /**
+     * Scenario: User should be able to delete a gist with valid token
+     */
     @Test
-    public void test_5_DeletePrivateGistForUsersWithAllScopes_ShouldBeSuccess() {
+    public void Test_5_DeletePrivateGistForUsersWithAllScopes_ShouldBeSuccess() {
         given().
                 auth().
                 oauth2(props.getProperty("gist_repo_user_gist_scopes")).

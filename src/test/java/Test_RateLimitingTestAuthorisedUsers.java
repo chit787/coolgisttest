@@ -9,7 +9,7 @@ import org.junit.Test;
 import io.restassured.response.Response;
 import static io.restassured.RestAssured.given;
 
-public class RateLimitingTestAuthorisedUsers {
+public class Test_RateLimitingTestAuthorisedUsers {
 
     private static Integer MAX_AUTH_RATE_LIMIT = 0;
     private String curr_rate_limiting = null;
@@ -26,8 +26,11 @@ public class RateLimitingTestAuthorisedUsers {
 
     }
 
+    /**
+     * Scenario: To Test api rate limit gives user valid status codes when limit is reached and/or crossed
+     */
     @Test
-    public void test_GistApiRateLimitForUserWithGistScope_ShouldBeSuccess() {
+    public void Test_GistApiRateLimitForUserWithGistScope() {
 
         for(int i = 1; i <= MAX_AUTH_RATE_LIMIT + 1; i++) {
             Response response = given().
