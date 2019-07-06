@@ -35,7 +35,7 @@ public class Test_RateLimitingTestUnauthorisedToAuthorisedUsers {
      * to request same resource when requested that resource with oAuth token
      */
     @Test
-    public void Test_GistApiRateLimitForUserWithNoGistScopeAndGistScope() {
+    public void RateLimitForUserWithNoGistScopeAndGistScope() {
 
         for (int i = 1; i <= MAX_UNAUTH_RATE_LIMIT + 1; i++) {
             Response response = when().

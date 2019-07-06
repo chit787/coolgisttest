@@ -32,7 +32,7 @@ public class Test_RateLimitingTestUnauthorisedUsers {
      * allowed boundaries
      */
     @Test
-    public void Test_GistApiForUserWithNoGistScope() {
+    public void RateLimitingForUserWithNoGistScope() {
 
         for (int i = 1 ; i <= MAX_UNAUTH_RATE_LIMIT + 1; i++) {
 

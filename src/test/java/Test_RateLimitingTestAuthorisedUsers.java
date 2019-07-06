@@ -30,7 +30,7 @@ public class Test_RateLimitingTestAuthorisedUsers {
      * Scenario: To Test api rate limit gives user valid status codes when limit is reached and/or crossed
      */
     @Test
-    public void Test_GistApiRateLimitForUserWithGistScope() {
+    public void RateLimitForUserWithGistScope() {
 
         for(int i = 1; i <= MAX_AUTH_RATE_LIMIT + 1; i++) {
             Response response = given().

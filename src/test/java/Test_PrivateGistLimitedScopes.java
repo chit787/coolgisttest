@@ -42,7 +42,7 @@ public class Test_PrivateGistLimitedScopes {
      * Scenario: user should not be able to create a gist without 'gist' scope assigned to the user token
      */
     @Test
-    public void Test_1_CreateGistForUserWithNoGistScope_ShouldBeNoSuccess() {
+    public void CreateGistForUserWithNoGistScope_ShouldBeNoSuccess() {
 
         File file = new File("src/test/resources/privateGist.json");
         given().
@@ -60,7 +60,7 @@ public class Test_PrivateGistLimitedScopes {
      * Scenario: user should not be able to delete a gist without 'gist' scope assigned to the user token
      */
     @Test
-    public void Test_2_DeletePrivateGistForUsersWithNoGistScope_ShouldBeNoSuccess() {
+    public void DeletePrivateGistForUsersWithNoGistScope_ShouldBeNoSuccess() {
         given().
             auth().
             oauth2(props.getProperty("scope_repo_user_with_no-gist")).
