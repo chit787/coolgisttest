@@ -21,5 +21,5 @@ this will install maven in your machine and if already present it switch to that
 
 *Please make sure you have docker desktop installed*
 
-1. Pull docker image from dockerhub and run using command `docker run chit786/gist-api-test:0.1`
+1. Pull docker image from dockerhub and run using command `docker run chit786/gist-api-test:0.2`
   
