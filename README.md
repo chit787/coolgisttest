@@ -2,7 +2,9 @@
 
 This project is a test setup developed on top of Maven + RestAssured + JUnit , to test Github Gist API's for authenticated and unauthenticated api calls
 
-## System Requirements
+#Installation 
+
+## 1. On Local Machine
 
 a) _maven_ : You can follow steps mentioned [here](https://maven.apache.org/install.html) or use [sdkman](https://sdkman.io/install) , preffered way is using sdkman which allows you to set local context in your terminal.
 
@@ -15,4 +17,9 @@ this will install maven in your machine and if already present it switch to that
 1. make sure you have correct access tokens in `src/test/respources/config.properties` file
 1. from your terminal where you executed sdkman command to install maven execute `cd <PROJECT_PATH> && mvn clean test` where `PROJECT_PATH` is the folder path on your directory where you have placed the project 
 
+## 2. Docker Container 
+
+*Please make sure you have docker desktop installed*
+
+1. Pull docker image from dockerhub and run using command `docker run chit786/gist-api-test:0.1`
   
