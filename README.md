@@ -2,6 +2,8 @@
 
 This project is a test setup developed on top of Maven + RestAssured + JUnit , to test Github Gist API's for authenticated and unauthenticated api calls
 
+*Tested on JDK 8*
+
 #Installation 
 
 ## 1. On Local Machine
